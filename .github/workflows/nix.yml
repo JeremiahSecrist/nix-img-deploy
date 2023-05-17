@@ -4,7 +4,7 @@ name: Build and Deploy to Storj
 on: workflow_dispatch
 
 jobs:
-  build_and_deploy:
+  build:
     name: Build
     runs-on: ubuntu-22.04
     steps:
@@ -21,3 +21,18 @@ jobs:
       - name: Build the golden image
         run: |
           nix build .
+  deploy:
+    name: Deploy to storj
+    needs: build
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+        # This is a workaround as SOURCE_DIR does not support
+        # a single file
+          args: --exclude '*' --include './result/*.vma.zst'
+        env:
+          AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
