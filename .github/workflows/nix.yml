@@ -20,9 +20,7 @@ jobs:
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
-          #nix build .
-          echo "hi" > a.vma.zst
-          cp ./result/*.vma.zst /tmp
+          mkdir result && echo "hi" > ./result/a.vma.zst && cp ./result/*.vma.zst /tmp
       
       - name: Upload Goldenimage
         uses: actions/upload-artifact@v3
