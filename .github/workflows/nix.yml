@@ -20,13 +20,15 @@ jobs:
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
-          nix build .
+          #nix build .
+          echo "hi" > a.vma.zst
+          cp ./result/*.vma.zst /tmp
       
       - name: Upload Goldenimage
         uses: actions/upload-artifact@v3
         with:
           name: goldenimage
-          path: result/*.vma.zst
+          path: /tmp/*.vma.zst
   
   deploy:
     name: Deploy to storj
