@@ -40,8 +40,6 @@ jobs:
           path: /tmp
   
       - uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --follow-symlinks --exclude '*' --include '*.vma.zst'
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
