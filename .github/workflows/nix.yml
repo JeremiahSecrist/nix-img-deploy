@@ -1,0 +1,19 @@
+ Our desired pipeline using only a Nix shell environment
+name: Build and Deploy to Storj
+
+on: workflow_dispatch
+
+jobs:
+  build_and_deploy:
+    name: Build
+    runs-on: ubuntu-22.04
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      # Nix-specific logic begins here
+      - name: Build the golden image
+        run: |
+          nix build .
