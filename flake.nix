@@ -1,6 +1,4 @@
-
 {
-  {
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
         # sops-nix = {
@@ -17,10 +15,8 @@
         system = "x86_64-linux";
         ng = nixos-generators.nixosGenerate;
     in {
-        packages.x86_64-linux.default = self.outputs.image.example;
-        image = {
-          proxmox = {
-            highdock = ng {
+        packages.x86_64-linux.default = self.outputs.goldenimage;
+            goldenimage = ng {
             inherit system;
             modules = [
               ./golden-image.nix
@@ -28,6 +24,4 @@
             format = "proxmox";
         };
       };
-    };
-  }
 }
