@@ -21,6 +21,7 @@ jobs:
       - name: Build the golden image
         run: |
           nix build .
+          pwd
   deploy:
     name: Deploy to storj
     needs: build
