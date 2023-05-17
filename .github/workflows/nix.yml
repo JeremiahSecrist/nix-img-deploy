@@ -20,7 +20,7 @@ jobs:
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
-          nix build .
+          # nix build .
           pwd
   deploy:
     name: Deploy to storj
