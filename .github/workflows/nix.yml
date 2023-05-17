@@ -20,7 +20,7 @@ jobs:
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
-          mkdir result && echo "hi" > ./result/a.vma.zst && cp ./result/*.vma.zst /tmp
+          nix build . && cp ./result/*.vma.zst /tmp
       
       - name: Upload Goldenimage
         uses: actions/upload-artifact@v3
@@ -39,7 +39,9 @@ jobs:
           name: goldenimage
           path: /tmp
   
-      - uses: jakejarvis/s3-sync-action@master
+      - uses: jakejarvis/s3-sync-action@v0.5.1
+        with:
+          args: --exclude '*' --include '*.vma.zst'
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
