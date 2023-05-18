@@ -18,15 +18,18 @@ jobs:
 #            system-features = nixos-test benchmark big-parallel kvm
 #            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
       
+#      - name: Cache install Nix packages
+#        uses: mtoohey31/cache-flake-attrs@v2
+#        with:
+          
+#          extra-conf: |
+#            system-features = nixos-test benchmark big-parallel kvm
+#            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+#          key: ${{ runner.os }}-nix-${{ hashFiles('./flake.lock', './flake.nix') }}
       - name: Cache install Nix packages
         uses: mtoohey31/cache-flake-attrs@v2
         with:
-          
-          extra-conf: |
-            system-features = nixos-test benchmark big-parallel kvm
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-          key: ${{ runner.os }}-nix-${{ hashFiles('./flake.lock', './flake.nix') }}
-          
+          key: nix-${{ runner.os }}-${{ hashFiles('flake.lock', 'flake.nix') }}          
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
