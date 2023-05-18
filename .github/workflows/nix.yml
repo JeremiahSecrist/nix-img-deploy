@@ -43,7 +43,7 @@ jobs:
           path: /tmp/
       
       - name: Extract zip
-        run: unzip -d /tmp /tmp/*.vma.zst
+        run: unzip -d /tmp /tmp/*.vma.zip
       
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
