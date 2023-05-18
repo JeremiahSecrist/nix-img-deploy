@@ -18,12 +18,6 @@ jobs:
             system-features = nixos-test benchmark big-parallel kvm
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
-      #- run: |
-          # Create with liberal rights, otherwise cache action will complain
-          # about permission errors.
-       #   sudo mkdir -p /nix/store
-        #  sudo chmod -R 777 /nix
-
       - name: Cache nix env take N+1
         uses: actions/cache@v2
         with:
@@ -66,7 +60,7 @@ jobs:
           path: /tmp/
       
       - name: Extract zip
-        run: unzip -d /tmp /tmp/*.vma.zst
+        run: unzip -d /tmp /tmp/*.vma.zst.zip
       
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
