@@ -19,10 +19,10 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
 
       - run: |
-        # Create with liberal rights, otherwise cache action will complain
-        # about permission errors.
-        sudo mkdir -p /nix/store
-        sudo chmod -R 777 /nix
+          # Create with liberal rights, otherwise cache action will complain
+          # about permission errors.
+          sudo mkdir -p /nix/store
+          sudo chmod -R 777 /nix
 
       - name: Cache nix env take N+1
         uses: actions/cache@v2
