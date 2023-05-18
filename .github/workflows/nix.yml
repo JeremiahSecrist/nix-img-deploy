@@ -11,25 +11,13 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v3
             
-#      - name: Install Nix
-#        uses: DeterminateSystems/nix-installer-action@main
-#        with:
-#          extra-conf: |
-#            system-features = nixos-test benchmark big-parallel kvm
-#            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-      
-#      - name: Cache install Nix packages
-#        uses: mtoohey31/cache-flake-attrs@v2
-#        with:
-          
-#          extra-conf: |
-#            system-features = nixos-test benchmark big-parallel kvm
-#            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-#          key: ${{ runner.os }}-nix-${{ hashFiles('./flake.lock', './flake.nix') }}
-      - name: Cache install Nix packages
-        uses: mtoohey31/cache-flake-attrs@v2
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
         with:
-          key: nix-${{ runner.os }}-${{ hashFiles('flake.lock', 'flake.nix') }}          
+          extra-conf: |
+            system-features = nixos-test benchmark big-parallel kvm
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+
       # Nix-specific logic begins here
       - name: Build the golden image
         run: |
@@ -55,7 +43,7 @@ jobs:
           path: /tmp/
       
       - name: Extract zip
-        run: unzip -d /tmp /tmp/*.vma.zst.zip
+        run: unzip -d /tmp /tmp/*.vma.zst
       
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
