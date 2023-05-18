@@ -27,6 +27,7 @@ jobs:
         with:
           name: goldenimage
           path: /tmp/*.vma.zst
+          retention-days: 1 
   
   deploy:
     name: Deploy to storj
@@ -39,7 +40,10 @@ jobs:
         with:
           name: goldenimage
           path: /tmp/
-  
+      
+      - name: Extract zip
+        run: unzip -d /tmp /tmp/*.vma.zst
+      
       - uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --exclude '*' --include '*.vma.zst'
