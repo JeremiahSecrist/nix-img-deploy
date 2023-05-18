@@ -34,9 +34,6 @@ jobs:
     name: Deploy to storj
     needs: build
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: /tmp
     steps:
       - name: Download Goldenimage
         id: download
@@ -44,11 +41,12 @@ jobs:
         with:
           name: goldenimage
           path: /tmp
-      - run: mkdir -p /tmp/upload && mv /tmp/*.vma.zst /tmp/upload
+      - run: mkdir upload
+      - run: mv /tmp/*.vma.zst upload
       - uses: jakejarvis/s3-sync-action@v0.5.1
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: /tmp/upload
+          SOURCE_DIR: upload
