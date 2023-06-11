@@ -16,12 +16,6 @@
     tailscale
   ];
 
-  fileSystems."/" = {
-    # label = "nixos";
-    # fsType = "ext4";
-    autoResize = true;
-  };
-
   networking = {
     firewall.checkReversePath = "loose"; # needed for tailscale
     hostName = "nixos-cloudinit"; # Define your hostname.
