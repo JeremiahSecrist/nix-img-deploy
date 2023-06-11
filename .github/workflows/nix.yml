@@ -42,7 +42,9 @@ jobs:
           name: goldenimage
           path: /tmp
       - run: mkdir upload
-      - run: mv /tmp/*.vma.zst upload/
+      - run: mv /tmp/*.vma.zst upload/${COMMIT}-$(sha256sum /tmp/*.vma.zst | awk '{print $1}').vma.zst
+        env:
+          COMMIT: ${{ steps.comment-branch.outputs.head_sha }}
       - uses: jakejarvis/s3-sync-action@v0.5.1
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
