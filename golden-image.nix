@@ -17,8 +17,8 @@
   ];
 
   fileSystems."/" = {
-    label = "nixos";
-    fsType = "ext4";
+    # label = "nixos";
+    # fsType = "ext4";
     autoResize = true;
   };
 
