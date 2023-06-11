@@ -4,6 +4,7 @@
   imports =
     [
         #./modules/services/docker.nix
+        ./modules/services/cloud-init.nix
         ./modules/users/arouzing.nix
         ./modules/services/openssh.nix
     ];
