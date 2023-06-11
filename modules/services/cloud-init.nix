@@ -4,7 +4,7 @@
 
     # ops should not need password because cloud init automation.
     security.sudo.extraRules = [
-        { users = [ "ops" ]; command = "ALL"; options = [ "NOPASSWD" "SETENV" ]; }
+        { users = [ "ops" ]; commands = [ "ALL" ]; options = [ "NOPASSWD" "SETENV" ]; }
     ];
 
     # ops user needed for cloud init
