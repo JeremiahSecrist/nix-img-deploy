@@ -9,16 +9,22 @@
         ./modules/services/openssh.nix
     ];
 
-    # base packages
-    environment.systemPackages = with pkgs; [
-      htop
-      vim
-      tailscale
-    ];
+  # base packages
+  environment.systemPackages = with pkgs; [
+    htop
+    vim
+    tailscale
+  ];
+
+  fileSystems."/" = {
+    label = "nixos";
+    fsType = "ext4";
+    autoResize = true;
+  };
 
   networking = {
-    firewall.checkReversePath = "loose";
-    hostName = "goldenimage"; # Define your hostname.
+    firewall.checkReversePath = "loose"; # needed for tailscale
+    hostName = "nixos-cloudinit"; # Define your hostname.
     # networkmanager.enable = true;
   };
 
