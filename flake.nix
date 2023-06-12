@@ -22,7 +22,7 @@
               ./golden-image.nix
             ];
             format = "proxmox";
-            name = "goldenimage-v1.0.0";
+            options.proxmox.name = "goldenimage-v1.0.0";
         };
       };
 }
