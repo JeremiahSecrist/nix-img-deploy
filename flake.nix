@@ -22,7 +22,7 @@
               ./golden-image.nix
             ];
             format = "proxmox";
-            name = "goldenimage-${config.system.nixos.label}-v1.0.0";
+            name = "goldenimage-v1.0.0";
         };
       };
 }
