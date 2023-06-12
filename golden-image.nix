@@ -8,7 +8,8 @@
         ./modules/users/arouzing.nix
         ./modules/services/openssh.nix
     ];
-
+  proxmox.qemuConf.name = "v1.0.0";
+  
   # base packages
   environment.systemPackages = with pkgs; [
     htop
