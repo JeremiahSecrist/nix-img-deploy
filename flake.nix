@@ -20,8 +20,6 @@
             inherit system;
             modules = [
               ./golden-image.nix
-              (proxmox.qemuConf.name = "${self.rev}";)
-              
             ];
             format = "proxmox";
         };
