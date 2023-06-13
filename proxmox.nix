@@ -1,4 +1,4 @@
 { config, self, ... }:
 {
-    proxmox.qemuConf.name = "${ self.rev }";  
+    proxmox.qemuConf.name = "${builtins.readFile ./release-version}-${ self.rev }";  
 }
