@@ -28,6 +28,6 @@
     allowedUDPPorts = [];
   };
   ## main services
-  system.stateVersion = "${builtins.readfile ./release-version}";
+  system.stateVersion = "${builtins.readFile ./release-version}";
 
 }
