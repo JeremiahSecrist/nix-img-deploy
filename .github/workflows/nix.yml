@@ -42,7 +42,7 @@ jobs:
         with:
           name: goldenimage
           path: upload
-      # - run: mv /tmp/*.vma.zst upload/
+          
       - uses: jakejarvis/s3-sync-action@v0.5.1
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
