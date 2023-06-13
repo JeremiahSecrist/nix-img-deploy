@@ -28,6 +28,5 @@
     allowedUDPPorts = [];
   };
   ## main services
-  system.stateVersion = "${lib.version}";
-
+  system.stateVersion = "${lib.version}"; # This is only useful for image building!
 }
