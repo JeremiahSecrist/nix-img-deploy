@@ -2,8 +2,8 @@
     networking.firewall.checkReversePath = "loose"; # needed for tailscale
     services.tailscale.enable = true;
 
-    systemd.services.tailscale-autoconnect = {
-    description = "Automatic connection to Tailscale";
+    # systemd.services.tailscale-autoconnect = {
+    # description = "Automatic connection to Tailscale";
 
 #     # make sure tailscale is running before trying to connect to tailscale
 #     after = [ "network-pre.target" "tailscale.service" ];
