@@ -4,10 +4,10 @@
     services.openssh = lib.mkDefault {
         enable = true;
         settings = {
-            kexAlgorithms = [ "curve25519-sha256@libssh.org" ];
-            kbdInteractiveAuthentication = false;
-            passwordAuthentication = false;
-            permitRootLogin = "no";
+            KexAlgorithms = [ "curve25519-sha256@libssh.org" ];
+            KbdInteractiveAuthentication = false;
+            PasswordAuthentication = false;
+            PermitRootLogin = "no";
         };
         openFirewall = true;
         startWhenNeeded = true;
