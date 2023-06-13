@@ -25,9 +25,10 @@
             default_user:
               name: ops
           users:
-              - name: default
+              - default
                 lock_passwd: false
-                passwd: {{ template_ci_password }}
+              - name: ops
+                lock_passwd: false
           ssh_pwauth: false
           chpasswd:
             expire: false
