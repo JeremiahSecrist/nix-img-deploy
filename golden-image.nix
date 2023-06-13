@@ -10,8 +10,7 @@
     ];
   # base packages
   environment.systemPackages = with pkgs; [
-    htop
-    vim
+    hx
     tailscale
   ];
 
