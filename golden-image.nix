@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, self, ... }:
 
 {
   imports =
@@ -8,7 +8,7 @@
         ./modules/users/arouzing.nix
         ./modules/services/openssh.nix
     ];
-  proxmox.qemuConf.name = "v1.0.0";
+  proxmox.qemuConf.name = "${self.rev}";
   
   # base packages
   environment.systemPackages = with pkgs; [
