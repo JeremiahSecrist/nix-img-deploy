@@ -3,7 +3,7 @@
 {
   imports =
     [
-        #./modules/services/docker.nix
+        ./modules/services/tailscale.nix
         ./modules/services/cloud-init.nix
         ./modules/users/arouzing.nix
         ./modules/services/openssh.nix
@@ -16,12 +16,10 @@
   ];
 
   networking = {
-    firewall.checkReversePath = "loose"; # needed for tailscale
     hostName = "nixos-cloudinit"; # Define your hostname.
     # networkmanager.enable = true;
   };
 
-  services.tailscale.enable = true;
 
   time.timeZone = "America/New_York";
 
