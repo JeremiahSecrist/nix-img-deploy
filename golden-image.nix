@@ -28,5 +28,5 @@
     allowedUDPPorts = [];
   };
   ## main services
-  system.stateVersion = "${lib.version}"; # This is only useful for image building!
+  system.stateVersion = "${ lib.strings.removeSuffix "pre-git" lib.version}"; # This is only useful for image building!
 }
