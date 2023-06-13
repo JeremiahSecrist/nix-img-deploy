@@ -10,7 +10,8 @@
     # ops user needed for cloud init
     users.users.ops = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ]; 
+        extraGroups = [ "wheel" ];
+        initialPassword = "changeme!!";
     };
 
     services.cloud-init = {
