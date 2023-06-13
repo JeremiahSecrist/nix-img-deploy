@@ -28,6 +28,6 @@
     allowedUDPPorts = [];
   };
   ## main services
-  system.stateVersion = "${builtins.readFile ./release-version}";
+  system.stateVersion = "${nixpkgs.lib.version}";
 
 }
