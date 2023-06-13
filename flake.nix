@@ -1,6 +1,6 @@
 {
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-${toString (builtins.readfile ./release-version)}";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-${builtins.readfile ./release-version}";
         # sops-nix = {
         #     url = github:Mic92/sops-nix;
         #     inputs.nixpkgs.follows = "nixpkgs";
