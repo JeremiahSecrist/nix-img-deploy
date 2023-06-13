@@ -5,6 +5,7 @@
         #     url = github:Mic92/sops-nix;
         #     inputs.nixpkgs.follows = "nixpkgs";
         # };
+        
         nixos-generators = {
             url = "github:nix-community/nixos-generators";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +17,7 @@
         ng = nixos-generators.nixosGenerate;
     in {
         packages.x86_64-linux.default = self.outputs.goldenimage;
-            goldenimage = ng {
+        goldenimage = ng {
             inherit system;
             modules = [
               ./golden-image.nix
