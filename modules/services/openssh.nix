@@ -8,7 +8,7 @@
             kbdInteractiveAuthentication = false;
             passwordAuthentication = false;
             permitRootLogin = "no";
-        }
+        };
         openFirewall = true;
         startWhenNeeded = true;
     };
