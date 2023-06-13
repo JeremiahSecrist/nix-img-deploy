@@ -10,7 +10,7 @@
     ];
   # base packages
   environment.systemPackages = with pkgs; [
-    hx
+    helix
     tailscale
   ];
 
