@@ -5,7 +5,7 @@ let
 #   rev = "${";
   regex = ".*([0-9]+ [0-9]+\\.[0-9]+).*";
   strippedVersion = builtins.match regex libVersion;
-  proxmoxName = "${releaseVersion}-${if strippedVersion != null then strippedVersion else libVersion }";
+  proxmoxName = "${releaseVersion}-${strippedVersion}-${libVersion}";
 in
 {
     proxmox.qemuConf.name = "${proxmoxName}";  
