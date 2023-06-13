@@ -20,6 +20,7 @@
             inherit system;
             modules = [
               ./golden-image.nix
+              {_module.args = {inherit self;};}
             ];
             format = "proxmox";
         };
