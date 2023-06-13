@@ -35,14 +35,14 @@ jobs:
     needs: build
     runs-on: ubuntu-22.04
     steps:
+      - run: mkdir upload
       - name: Download Goldenimage
         id: download
         uses: actions/download-artifact@v3
         with:
           name: goldenimage
-          path: /tmp
-      - run: mkdir upload
-      - run: mv /tmp/*.vma.zst upload/
+          path: upload
+      # - run: mv /tmp/*.vma.zst upload/
       - uses: jakejarvis/s3-sync-action@v0.5.1
         env:
           AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
