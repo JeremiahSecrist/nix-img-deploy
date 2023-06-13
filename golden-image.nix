@@ -5,7 +5,6 @@
     [
         ./modules/services/tailscale.nix
         ./modules/services/cloud-init.nix
-        ./modules/users/arouzing.nix
         ./modules/services/openssh.nix
     ];
   # base packages
