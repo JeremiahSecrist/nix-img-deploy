@@ -25,10 +25,9 @@
             default_user:
               name: ops
           users:
-              - default
-                lock_passwd: false
-              - name: ops
-                lock_passwd: false
+            - default
+            - name: ops
+              hashed_passwd: true
           ssh_pwauth: false
           chpasswd:
             expire: false
