@@ -24,10 +24,9 @@
               renderers: [ 'networkd' ]
             default_user:
               name: ops
+              lock_passwd: false
           users:
             - default
-            - name: ops
-              hashed_passwd: true
           ssh_pwauth: false
           chpasswd:
             expire: false
