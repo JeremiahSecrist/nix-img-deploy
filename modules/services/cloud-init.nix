@@ -16,23 +16,29 @@
     services.cloud-init = {
         enable = true;
         network.enable = true;
-        settings = {
-          system_info = {
-            distro = "nixos";
-            network = {
-              renderers = [ "networkd" ];
-            };
-            default_user = {
-              name = "ops";
-            };
-          };
-          users = [ "default" ];
-          chpasswd = {
-            expire= false;
-          };
-          ssh_pwauth = false;
-          disable_root = true;
-          preserve_hostname = false;
-        };
+         config = ''
+          system_info:
+            distro: nixos
+            network:
+              renderers: [ 'networkd' ]
+            default_user:
+              name: ops
+          users:
+              - default
+          ssh_pwauth: false
+          chpasswd:
+            expire: false
+          cloud_init_modules:
+            - migrator
+            - seed_random
+            - growpart
+            - resizefs
+          cloud_config_modules:
+            - disk_setup
+            - mounts
+            - set-passwords
+            - ssh
+          cloud_final_modules: []
+          '';
       };
 }
